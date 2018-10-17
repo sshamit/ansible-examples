@@ -2,6 +2,6 @@
 # This playbook deploys a simple standalone JBoss server.
 
 - hosts: localhost
-
+  become: yes
   roles:
     - jboss-standalone
