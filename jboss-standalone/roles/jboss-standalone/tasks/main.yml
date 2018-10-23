@@ -35,11 +35,11 @@
     url_username: "{{ url_username | default(None) }}"
     url_password: "{{ url_password | default(None) }}"
 
-- name: Move jboss-modules to jboss-modules-backup
-  command: mv /usr/share/jboss-as/jboss-modules.jar /usr/share/jboss-as/jboss-modules-backup.jar
-
-- name: Move jboss-modules-1.1.5.GA to jboss-modules
-  command: mv /usr/share/jboss-as/jboss-modules-1.1.5.GA.jar /usr/share/jboss-as/jboss-modules.jar
+- name: Upgrade jboss-modules to jboss-modules-1.1.5.GA
+  command: "{{item}}"
+  with_items:
+   - mv /usr/share/jboss-as/jboss-modules.jar /usr/share/jboss-as/jboss-modules-backup-old.jar
+   - mv /usr/share/jboss-as/jboss-modules-1.1.5.GA.jar /usr/share/jboss-as/jboss-modules.jar
   
 - name: Copying standalone.xml configuration file
   template:
