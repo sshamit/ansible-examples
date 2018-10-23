@@ -5,7 +5,7 @@
 # chkconfig: - 80 20
 # description: JBoss AS Standalone
 # processname: standalone
-pidfile: /var/run/jboss-as/jboss-as-standalone.pid
+# pidfile: /var/run/jboss-as/jboss-as-standalone.pid
 # config: /etc/jboss-as/jboss-as.conf
 
 # Source function library.
