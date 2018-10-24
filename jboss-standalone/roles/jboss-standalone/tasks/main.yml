@@ -4,10 +4,10 @@
     name: "{{ item }}"
     state: present
   with_items:
-   - unzip
-   - java-1.7.0-openjdk
-   - libselinux-python
-   - libsemanage-python
+    - unzip
+    - java-1.7.0-openjdk
+    - libselinux-python
+    - libsemanage-python
 
 - name: Download JBoss from jboss.org
   get_url:
@@ -23,9 +23,9 @@
 
   # Rename the dir to avoid encoding the version in the init script
 - name: Rename install directory
-  command: /bin/mv jboss-as-7.1.1.Final jboss-as 
+  command: /bin/mv jboss-as-7.1.1.Final jboss-as
   args:
-    chdir: /usr/share 
+    chdir: /usr/share
     creates: /usr/share/jboss-as
 
 - name: Async Download JBoss module by URL (HTTP/HTTPS/FTP)
@@ -38,9 +38,9 @@
 - name: Upgrade jboss-modules to jboss-modules-1.1.5.GA
   command: "{{item}}"
   with_items:
-   - mv /usr/share/jboss-as/jboss-modules.jar /usr/share/jboss-as/jboss-modules-backup-old.jar
-   - mv /usr/share/jboss-as/jboss-modules-1.1.5.GA.jar /usr/share/jboss-as/jboss-modules.jar
-  
+    - mv /usr/share/jboss-as/jboss-modules.jar /usr/share/jboss-as/jboss-modules-backup-old.jar
+    - mv /usr/share/jboss-as/jboss-modules-1.1.5.GA.jar /usr/share/jboss-as/jboss-modules.jar
+
 - name: Copying standalone.xml configuration file
   template:
     src: standalone.xml
@@ -108,5 +108,5 @@
     permanent: yes
   when: ansible_distribution_major_version == "7"
   with_items:
-  - "{{ http_port }}/tcp"
-  - "{{ https_port }}/tcp"
+    - "{{ http_port }}/tcp"
+    - "{{ https_port }}/tcp"
